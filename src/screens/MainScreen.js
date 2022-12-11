@@ -5,12 +5,15 @@ import {primary, white} from '../constants/colors';
 import CustomButton from '../components/CustomButton';
 
 const MainScreen = () => {
+  const onPressHandler = () => {
+    console.log('Hey! I am a prop');
+  };
   return (
     <View style={styles.container}>
       <View style={styles.blueContainer}></View>
       <View style={styles.whiteContainer}>
         <View />
-        <CustomButton />
+        <CustomButton onPress={onPressHandler} title="Start the game" />
       </View>
     </View>
   );

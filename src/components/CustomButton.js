@@ -3,14 +3,10 @@ import React from 'react';
 
 import {white} from '../constants/colors';
 
-const CustomButton = () => {
+const CustomButton = ({onPress, title}) => {
   return (
-    <Pressable
-      style={styles.button}
-      onPress={() => {
-        console.log('Hello, I am a button');
-      }}>
-      <Text style={styles.buttonText}>Start the game</Text>
+    <Pressable style={styles.button} onPress={onPress}>
+      <Text style={styles.buttonText}>{title}</Text>
     </Pressable>
   );
 };
