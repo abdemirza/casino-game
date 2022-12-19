@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     height: 48,
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily: 'Poppins-SemiBold',
     borderRadius: 57,
   },
   buttonText: {

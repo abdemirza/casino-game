@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 14,
-    fontWeight: '700',
+    fontFamily: 'Nunito-Bold',
     color: 'white',
     marginBottom: 3,
   },
   balanceText: {
     fontSize: 32,
-    fontWeight: '700',
+    fontFamily: 'SairaSemiCondensed-SemiBold',
     color: 'white',
   },
   dollarIcon: {

@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/CherryBomb-Regular.ttf",
+      "sha1": "9930d1eaab8988504edc239deadf76da70e83795"
+    },
+    {
+      "path": "assets/fonts/Nunito-Bold.ttf",
+      "sha1": "dea5eec0aca2aef62e3bfc625cf95f9d45b59687"
+    },
+    {
+      "path": "assets/fonts/Poppins-SemiBold.ttf",
+      "sha1": "8a4ace9392d06bcb7f8ea2f5169b07e4c383a90d"
+    },
+    {
+      "path": "assets/fonts/SairaSemiCondensed-SemiBold.ttf",
+      "sha1": "9cb92a176ca974b3b780b3404184e2afecf0cb64"
+    }
+  ]
+}
