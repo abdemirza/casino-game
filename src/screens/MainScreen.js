@@ -1,10 +1,11 @@
-import {View, StyleSheet, Image, Text} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import React from 'react';
 
 import {primary, white} from '../constants/colors';
 import CustomButton from '@components/CustomButton';
 
 import ic_dollar from '@images/ic_dollar.png';
+import MyAppText from '../components/MyAppText';
 
 const MainScreen = () => {
   const onPressHandler = () => {
@@ -14,8 +15,8 @@ const MainScreen = () => {
     <View style={styles.container}>
       <View style={styles.blueContainer}>
         <Image source={ic_dollar} style={styles.dollarIcon} />
-        <Text style={styles.heading}>TOTAL BALANCE</Text>
-        <Text style={styles.balanceText}>24 358.50</Text>
+        <MyAppText style={styles.heading}>TOTAL BALANCE</MyAppText>
+        <MyAppText style={styles.balanceText}>24 358.50</MyAppText>
       </View>
       <View style={styles.whiteContainer}>
         <View />
