@@ -6,6 +6,7 @@ import CustomButton from '@components/CustomButton';
 
 import ic_dollar from '@images/ic_dollar.png';
 import MyAppText from '../components/MyAppText';
+import Table from '../components/Table/Table';
 
 const MainScreen = () => {
   const onPressHandler = () => {
@@ -17,6 +18,7 @@ const MainScreen = () => {
         <Image source={ic_dollar} style={styles.dollarIcon} />
         <MyAppText style={styles.heading}>TOTAL BALANCE</MyAppText>
         <MyAppText style={styles.balanceText}>24 358.50</MyAppText>
+        <Table />
       </View>
       <View style={styles.whiteContainer}>
         <View />
