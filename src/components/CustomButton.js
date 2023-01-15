@@ -1,13 +1,13 @@
-import {Text, Pressable, StyleSheet} from 'react-native';
+import {Text, Pressable, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import {white} from '../constants/colors';
 
 const CustomButton = ({onPress, title}) => {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <Text style={styles.buttonText}>{title}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 const styles = StyleSheet.create({

@@ -1,5 +1,5 @@
 import {View, StyleSheet, Image} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 
 import {primary, white} from '../constants/colors';
 import CustomButton from '@components/CustomButton';
@@ -7,11 +7,16 @@ import CustomButton from '@components/CustomButton';
 import ic_dollar from '@images/ic_dollar.png';
 import MyAppText from '../components/MyAppText';
 import Table from '../components/Table/Table';
+import SpinPopup from '../components/SpinPopup';
+
+export const symbols = ['♠', '♦', '♣'];
 
 const MainScreen = () => {
+  const [popupVisible, setPopupVisible] = useState(false);
   const onPressHandler = () => {
-    console.log('Hey! I am a prop');
+    setPopupVisible(!popupVisible);
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.blueContainer}>
@@ -24,6 +29,7 @@ const MainScreen = () => {
         <CustomButton onPress={onPressHandler} title="Start the game" />
       </View>
       <Table />
+      <SpinPopup visible={popupVisible} setVisible={setPopupVisible} />
     </View>
   );
 };
