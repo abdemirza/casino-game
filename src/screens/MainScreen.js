@@ -18,12 +18,12 @@ const MainScreen = () => {
         <Image source={ic_dollar} style={styles.dollarIcon} />
         <MyAppText style={styles.heading}>TOTAL BALANCE</MyAppText>
         <MyAppText style={styles.balanceText}>24 358.50</MyAppText>
-        <Table />
       </View>
       <View style={styles.whiteContainer}>
         <View />
         <CustomButton onPress={onPressHandler} title="Start the game" />
       </View>
+      <Table />
     </View>
   );
 };
