@@ -1,26 +1,26 @@
-import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import MyAppText from './MyAppText';
-import {white} from '../constants/colors';
 
 import LinearGradient from 'react-native-linear-gradient';
+import {ScaledSheet} from 'react-native-size-matters';
 
 const Card = ({symbol}) => {
   return (
     <LinearGradient
       colors={['#E48900', '#fff', '#fff', '#fff', '#E48900']}
       style={styles.container}>
-      <MyAppText style={{fontSize: 80}}>{symbol}</MyAppText>
+      <MyAppText style={styles.symbolText}>{symbol}</MyAppText>
     </LinearGradient>
   );
 };
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
-    width: 108,
-    height: 153,
-    borderRadius: 8,
+    width: '100@s',
+    height: '140@vs',
+    borderRadius: '8@s',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  symbolText: {fontSize: '80@s'},
 });
 export default Card;

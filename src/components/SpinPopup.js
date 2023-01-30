@@ -1,36 +1,43 @@
-import {View, Text, StyleSheet, Modal, Image, Pressable} from 'react-native';
+import {View, Modal, Image, Pressable} from 'react-native';
 import React from 'react';
 
 import ic_close from '@images/ic_close.png';
-// import ic_spades from '@images/cardsSymbols';
 
 import Card from './Card';
 import {symbols} from '../screens/MainScreen';
 import CustomButton from './CustomButton';
 
 import LinearGradient from 'react-native-linear-gradient';
+import {ScaledSheet} from 'react-native-size-matters';
 
-const SpinPopup = ({visible, setVisible}) => {
-  const onPressHandler = () => {
+const SpinPopup = ({visible, setVisible, data, setData}) => {
+  const onExitHandler = () => {
     setVisible(!visible);
   };
+
+  const getRandomNumber = () => {
+    const randNum = Math.floor(Math.random() * 4);
+    return randNum;
+  };
+
+  const onSpinPress = () => {
+    setData.setCard1(getRandomNumber());
+    setData.setCard2(getRandomNumber());
+    setData.setCard3(getRandomNumber());
+  };
+
   return (
     <Modal visible={visible} transparent={true}>
       <LinearGradient colors={['#FECF15', '#E48900']} style={styles.container}>
         <View style={styles.crossContainer}>
-          <Pressable onPress={onPressHandler}>
+          <Pressable onPress={onExitHandler}>
             <Image source={ic_close} />
           </Pressable>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 16,
-          }}>
-          <Card symbol={symbols[0]} />
-          <Card symbol={symbols[1]} />
-          <Card symbol={symbols[2]} />
+        <View style={styles.cardContainer}>
+          <Card symbol={symbols[data.card1]} />
+          <Card symbol={symbols[data.card2]} />
+          <Card symbol={symbols[data.card3]} />
         </View>
         <View
           style={{
@@ -38,28 +45,37 @@ const SpinPopup = ({visible, setVisible}) => {
             justifyContent: 'center',
             height: 120,
           }}>
-          <CustomButton title="spin" style={{width: 343}} />
+          <CustomButton
+            onPress={onSpinPress}
+            title="spin"
+            style={{width: 343}}
+          />
         </View>
       </LinearGradient>
     </Modal>
   );
 };
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
     position: 'absolute',
     width: '100%',
     height: '50%',
     backgroundColor: '#FECF15',
     bottom: 0,
-    borderTopEndRadius: 10,
-    borderTopStartRadius: 10,
+    borderTopEndRadius: '10@s',
+    borderTopStartRadius: '10@s',
     justifyContent: 'space-between',
   },
+  cardContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: '10@s',
+  },
   crossContainer: {
-    height: 50,
+    height: '50@vs',
     flexDirection: 'row-reverse',
-    padding: 10,
+    padding: '10@s',
   },
 });
 
