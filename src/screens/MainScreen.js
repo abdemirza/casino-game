@@ -11,6 +11,7 @@ import SpinPopup from '../components/SpinPopup';
 import {ScaledSheet, vs} from 'react-native-size-matters';
 
 export const symbols = ['♠', '♦', '♣', '♥'];
+export const costPerSpin = 2;
 
 const {height, width} = Dimensions.get('window');
 
@@ -50,6 +51,8 @@ const MainScreen = () => {
         setData={{setCard1, setCard2, setCard3}}
         visible={popupVisible}
         setVisible={setPopupVisible}
+        balance={balance}
+        setBalance={setBalance}
       />
     </View>
   );

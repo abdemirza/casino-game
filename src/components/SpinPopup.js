@@ -1,19 +1,28 @@
 import {View, Modal, Image, Pressable} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 
 import ic_close from '@images/ic_close.png';
 
 import Card from './Card';
-import {symbols} from '../screens/MainScreen';
+import {costPerSpin, symbols} from '../screens/MainScreen';
 import CustomButton from './CustomButton';
 
 import LinearGradient from 'react-native-linear-gradient';
 import {ScaledSheet} from 'react-native-size-matters';
 
-const SpinPopup = ({visible, setVisible, data, setData}) => {
+const SpinPopup = ({
+  visible,
+  setVisible,
+  data,
+  setData,
+  balance,
+  setBalance,
+}) => {
   const onExitHandler = () => {
     setVisible(!visible);
   };
+
+  const [firstClick, setFirstClick] = useState(true);
 
   const getRandomNumber = () => {
     const randNum = Math.floor(Math.random() * 4);
@@ -21,9 +30,32 @@ const SpinPopup = ({visible, setVisible, data, setData}) => {
   };
 
   const onSpinPress = () => {
-    setData.setCard1(getRandomNumber());
-    setData.setCard2(getRandomNumber());
-    setData.setCard3(getRandomNumber());
+    const card1 = getRandomNumber();
+    const card2 = getRandomNumber();
+    const card3 = getRandomNumber();
+    setData.setCard1(card1);
+    setData.setCard2(card2);
+    setData.setCard3(card3);
+    // check if we have enough balance
+    if (balance >= costPerSpin) {
+      // three of a kind
+      if (card1 === card2 && card2 === card3 && !firstClick) {
+        if (card1 === 0 && card2 === 0 && card3 === 0) {
+          setBalance(balance + 5 - costPerSpin);
+        }
+      }
+      // two of a kind
+      else if (card1 === card2 || card2 === card3 || card3 === card1) {
+        setBalance(balance + 0.5 - costPerSpin);
+      } else {
+        setBalance(balance - costPerSpin);
+      }
+    }
+    // when we do not have enough balance
+    else {
+      alert('Game Over, Try Again');
+    }
+    setFirstClick(false);
   };
 
   return (
