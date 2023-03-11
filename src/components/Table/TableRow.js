@@ -3,16 +3,17 @@ import React from 'react';
 import {borderColor, white} from '../../constants/colors';
 
 import MyAppText from '../MyAppText';
+import {symbols} from '../../screens/MainScreen';
 
-const TableRow = ({bottomContainer}) => {
+const TableRow = ({bottomContainer, datum}) => {
   return (
     <View style={[styles.container, bottomContainer && styles.bottomContainer]}>
       <View style={styles.row}>
-        <MyAppText style={styles.heading}>♠</MyAppText>
-        <MyAppText style={styles.heading}>♦</MyAppText>
-        <MyAppText style={styles.heading}>♣</MyAppText>
+        <MyAppText style={styles.heading}>{symbols[datum.card1]}</MyAppText>
+        <MyAppText style={styles.heading}>{symbols[datum.card2]}</MyAppText>
+        <MyAppText style={styles.heading}>{symbols[datum.card3]}</MyAppText>
       </View>
-      <MyAppText style={styles.score}>0.5</MyAppText>
+      <MyAppText style={styles.score}>{datum.point}</MyAppText>
     </View>
   );
 };

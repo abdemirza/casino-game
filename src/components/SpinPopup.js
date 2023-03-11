@@ -4,7 +4,13 @@ import React, {useState} from 'react';
 import ic_close from '@images/ic_close.png';
 
 import Card from './Card';
-import {costPerSpin, symbols} from '../screens/MainScreen';
+import {
+  costPerSpin,
+  symbols,
+  threeOfAkind,
+  threeSpades,
+  twoOfAkind,
+} from '../screens/MainScreen';
 import CustomButton from './CustomButton';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -17,6 +23,8 @@ const SpinPopup = ({
   setData,
   balance,
   setBalance,
+  tableData,
+  setTableData,
 }) => {
   const onExitHandler = () => {
     setVisible(!visible);
@@ -41,13 +49,51 @@ const SpinPopup = ({
       // three of a kind
       if (card1 === card2 && card2 === card3 && !firstClick) {
         if (card1 === 0 && card2 === 0 && card3 === 0) {
-          setBalance(balance + 5 - costPerSpin);
+          setBalance(balance + threeSpades - costPerSpin);
+          setTableData([
+            ...tableData,
+            {
+              card1,
+              card2,
+              card3,
+              point: threeSpades,
+            },
+          ]);
+        } else {
+          setBalance(balance + threeOfAkind - costPerSpin);
+          setTableData([
+            ...tableData,
+            {
+              card1,
+              card2,
+              card3,
+              point: threeOfAkind,
+            },
+          ]);
         }
       }
       // two of a kind
       else if (card1 === card2 || card2 === card3 || card3 === card1) {
-        setBalance(balance + 0.5 - costPerSpin);
+        setBalance(balance + twoOfAkind - costPerSpin);
+        setTableData([
+          ...tableData,
+          {
+            card1,
+            card2,
+            card3,
+            point: twoOfAkind,
+          },
+        ]);
       } else {
+        setTableData([
+          ...tableData,
+          {
+            card1,
+            card2,
+            card3,
+            point: 0,
+          },
+        ]);
         setBalance(balance - costPerSpin);
       }
     }

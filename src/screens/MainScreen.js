@@ -12,10 +12,11 @@ import {ScaledSheet, vs} from 'react-native-size-matters';
 
 export const symbols = ['♠', '♦', '♣', '♥'];
 export const costPerSpin = 2;
+export const threeSpades = 5;
+export const threeOfAkind = 2;
+export const twoOfAkind = 0.5;
 
-const {height, width} = Dimensions.get('window');
-
-console.log({height, width});
+const {height} = Dimensions.get('window');
 
 const MainScreen = () => {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -23,6 +24,7 @@ const MainScreen = () => {
   const [card1, setCard1] = useState(0);
   const [card2, setCard2] = useState(0);
   const [card3, setCard3] = useState(0);
+  const [tableData, setTableData] = useState([]);
 
   const onPressHandler = () => {
     setPopupVisible(!popupVisible);
@@ -45,7 +47,7 @@ const MainScreen = () => {
           <CustomButton onPress={onPressHandler} title="Start the game" />
         </View>
       </View>
-      <Table />
+      <Table data={tableData} />
       <SpinPopup
         data={{card1, card2, card3}}
         setData={{setCard1, setCard2, setCard3}}
@@ -53,6 +55,8 @@ const MainScreen = () => {
         setVisible={setPopupVisible}
         balance={balance}
         setBalance={setBalance}
+        tableData={tableData}
+        setTableData={setTableData}
       />
     </View>
   );

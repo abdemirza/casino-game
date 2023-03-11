@@ -5,22 +5,26 @@ import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import {ScaledSheet} from 'react-native-size-matters';
 
-const Table = () => {
-  const data = [1, 2, 3, 4, 5, 6];
-
-  return (
-    <View style={styles.container}>
-      <TableHeader />
-      <ScrollView
-        style={styles.scrollContainer}
-        showsVerticalScrollIndicator={false}
-        bounces={false}>
-        {data.map((datum, index) => (
-          <TableRow key={index} bottomContainer={index == data.length - 1} />
-        ))}
-      </ScrollView>
-    </View>
-  );
+const Table = ({data}) => {
+  if (data.length > 0) {
+    return (
+      <View style={styles.container}>
+        <TableHeader />
+        <ScrollView
+          style={styles.scrollContainer}
+          showsVerticalScrollIndicator={false}
+          bounces={false}>
+          {data.map((datum, index) => (
+            <TableRow
+              datum={datum}
+              key={index}
+              bottomContainer={index == data.length - 1}
+            />
+          ))}
+        </ScrollView>
+      </View>
+    );
+  } else return <View />;
 };
 const styles = ScaledSheet.create({
   container: {
