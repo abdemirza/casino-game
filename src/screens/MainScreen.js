@@ -9,6 +9,7 @@ import MyAppText from '../components/MyAppText';
 import Table from '../components/Table/Table';
 import SpinPopup from '../components/SpinPopup';
 import {ScaledSheet, vs} from 'react-native-size-matters';
+import GameOver from '../components/GameOver';
 
 export const symbols = ['♠', '♦', '♣', '♥'];
 export const costPerSpin = 2;
@@ -32,7 +33,7 @@ const MainScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.blueContainer}>
+      {/* <View style={styles.blueContainer}>
         <Image source={ic_dollar} style={styles.dollarIcon} />
         <MyAppText style={styles.heading}>TOTAL BALANCE</MyAppText>
         <MyAppText style={styles.balanceText}>{balance}</MyAppText>
@@ -46,8 +47,10 @@ const MainScreen = () => {
           ]}>
           <CustomButton onPress={onPressHandler} title="Start the game" />
         </View>
-      </View>
+      </View> */}
+      <View style={{backgroundColor: primary, height: '100%'}} />
       <Table data={tableData} />
+      <GameOver data={{card1, card2, card3}} />
       <SpinPopup
         data={{card1, card2, card3}}
         setData={{setCard1, setCard2, setCard3}}
