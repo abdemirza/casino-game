@@ -99,7 +99,6 @@ const SpinPopup = ({
     }
     // when we do not have enough balance
     else {
-      alert('Game Over, Try Again');
     }
     setFirstClick(false);
   };

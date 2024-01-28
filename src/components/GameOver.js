@@ -7,9 +7,10 @@ import {symbols} from '../screens/MainScreen';
 import CustomButton from './CustomButton';
 import LinearGradient from 'react-native-linear-gradient';
 
-const GameOver = ({data}) => {
+const GameOver = ({data, visible, onRestartHandler, balance}) => {
+  console.log(data);
   return (
-    <Modal visible={true} transparent={true}>
+    <Modal visible={visible} transparent={true}>
       <View style={styles.container}>
         <LinearGradient
           colors={['#F63737', '#C20707']}
@@ -22,11 +23,15 @@ const GameOver = ({data}) => {
           <MyAppText style={styles.symbol}>{symbols[data.card3]}</MyAppText>
         </View>
         <View style={styles.scoreContainer}>
-          <MyAppText style={styles.score}>0.0</MyAppText>
+          <MyAppText style={styles.score}>{balance}</MyAppText>
           <MyAppText style={styles.scoreSubText}>Your Score</MyAppText>
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton style={styles.button} title="Restart Game!" />
+          <CustomButton
+            onPress={onRestartHandler}
+            style={styles.button}
+            title="Restart Game!"
+          />
         </View>
       </View>
     </Modal>
